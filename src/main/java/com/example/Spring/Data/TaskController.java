@@ -45,4 +45,9 @@ public class TaskController
         taskService.deleteById(id);
     }
 
+    @GetMapping("/get/{id}")
+    public Task getTaskById(@PathVariable Long id){
+        return taskService.getTaskById(id);
+    }
+
 }

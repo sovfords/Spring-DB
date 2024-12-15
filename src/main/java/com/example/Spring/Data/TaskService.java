@@ -18,9 +18,11 @@ public class TaskService
         repository.save(task);
     }
 
+    @TrackUserAction
     public List<Task> getAllTasks() {
         return repository.findAll();
     }
+
 
     public List<Task> getTasksByStatus(TaskStatus status) {
         List<Task> tasks = getAllTasks();
@@ -35,6 +37,12 @@ public class TaskService
 
         return sortedTasks;
 
+    }
+
+    @TrackUserAction
+    public Task getTaskById(Long id)
+    {
+        return repository.findById(id).orElse(null);
     }
 
     public Task updateTaskStatus(Long id,TaskStatus status) {
